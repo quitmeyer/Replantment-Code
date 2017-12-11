@@ -142,10 +142,13 @@ void loop() {
 
   if(startUp==true){
             Serial.println("A is starting");
+     RFIDtone();
 
-   RFIDtone();
     runAll();
+
     startUp=false;
+
+    //!!!!!!!!!!!!!!!!
     delay(1000); // don't do anything shorter than .5-1 second
   }
 

@@ -105,7 +105,8 @@ int motiondetection = digitalRead(PIRpin);
   Serial.println("Motion Detected");
     //runAll();
     delay(900);
-    runRandom();
+  //  runRandom();
+    runRandomExtraLong();
 //turnLightsON();
   }
   else{
@@ -132,7 +133,6 @@ Serial.println("Going Forward");
 
   }
 
-  ///Add extra long range !!!!!!!!!!!!!!!!
 
 int runtime = random(5000, 14000);
 Serial.print("Running for:  " );
@@ -160,6 +160,59 @@ Serial.println(waittime);
 
 }
 
+
+void runRandomExtraLong() {
+
+
+  //turnLightsON();
+allRand();
+  //Choose a direction //DO NOT GO BOTH DIRECTIONS AT SAME TIME! 
+  if ( random(2) ){
+  digitalWrite(GOBACK, LOW);   // turn the LED on (HIGH is the voltage level)
+Serial.println("Going BACK");
+  }
+  else {
+    digitalWrite(GOFOR, LOW);   // turn the LED on (HIGH is the voltage level)
+Serial.println("Going Forward");
+
+  }
+
+  ///Add extra long range !!!!!!!!!!!!!!!!
+
+if(random(10)==5){
+  long runtime = random(30000, 99000);
+Serial.print("Running LONG for:  " );
+Serial.println(runtime);
+delay(runtime);
+}
+else{
+//run regular random
+int runtime = random(5000, 14000);
+Serial.print("Running for:  " );
+Serial.println(runtime);
+delay(runtime);
+
+}
+allOff();
+  digitalWrite(commPin, 0); //Replicate whatever state gets read
+
+
+
+
+//Serial.print("Running for:  " );
+//Choose a random amount of time to move around
+//  delay(Serial.println(random(5000, 14000)));
+//  allOff();
+//  delay(random(3000, 15000));
+
+int waittime = random(5000,12000);
+Serial.print("Chilling for:  " );
+Serial.println(waittime);
+
+  delay(waittime);
+
+
+}
 void allRand(){
 
 Serial.println(random(2));
